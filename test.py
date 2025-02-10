@@ -25,6 +25,9 @@ import pandas as pd
 import pyspedas
 import smplotlib
 
+import warnings
+warnings.filterwarnings("ignore")
+
 from pytplot import get_data
 from datetime import datetime
 
