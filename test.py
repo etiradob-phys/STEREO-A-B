@@ -15,15 +15,15 @@ def install_package(package):
 
 install_package("numpy")
 install_package("pandas")
-#install_package("pyspedas")
+install_package("pyspedas")
 
 # --------------------------------------------------------------------------------------------------------------------------------------
 
-#import numpy as np
-#import pandas as pd
+import numpy as np
+import pandas as pd
 import pyspedas
 
-#from pytplot import get_data
+from pytplot import get_data
 from datetime import datetime
 
 # --------------------------------------------------------------------------------------------------------------------------------------
@@ -64,3 +64,29 @@ if __name__ == "__main__":
 plastic_vars = pyspedas.stereo.plastic(trange=[begin_time.strftime("%Y-%m-%d"), end_time.strftime("%Y-%m-%d")],probe=probe.lower())
 print('----------------------------------------------------------------')
 mag_vars = pyspedas.stereo.mag(trange=[begin_time.strftime("%Y-%m-%d"), end_time.strftime("%Y-%m-%d")],probe=probe.lower())
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+mag_data = get_data('BFIELD')
+
+plastic_proton_number_density = get_data('proton_number_density')
+plastic_proton_bulk_speed = get_data('proton_bulk_speed')          
+plastic_proton_temperature = get_data('proton_temperature')
+plastic_proton_thermal_speed = get_data('proton_thermal_speed')
+
+# Times
+t_mag_data = mag_data.times
+t_proton_number_density = plastic_proton_number_density.times
+t_proton_bulk_speed = plastic_proton_bulk_speed.times
+t_proton_temperature = plastic_proton_temperature.times
+t_proton_thermal_speed = plastic_proton_thermal_speed.times
+
+# Values
+values_mag_data_Br = mag_data.y[:,0]                                          ## Magnetic Field (Br)                  
+values_mag_data_Bt = mag_data.y[:,1]                                          ## Magnetic Filed (Bt)
+values_mag_data_Bn = mag_data.y[:,2]                                          ## Magnetic Field (Bn)
+values_mag_data_BTot = mag_data.y[:,3]                                        ## Magnetic Field (TOTAL)
+values_proton_number_density = plastic_proton_number_density.y                ## Density                            
+values_proton_bulk_speed = plastic_proton_bulk_speed.y                        ## Bulk Speed
+values_proton_temperature = plastic_proton_temperature.y                      ## Temperature
+values_proton_thermal_speed = plastic_proton_thermal_speed.y                  ## Thermal Speed
