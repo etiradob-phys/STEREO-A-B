@@ -19,9 +19,9 @@ install_package("pandas")
 
 # --------------------------------------------------------------------------------------------------------------------------------------
 
-import numpy as np
-import pandas as pd
-#import pyspedas
+#import numpy as np
+#import pandas as pd
+import pyspedas
 
 #from pytplot import get_data
 from datetime import datetime
@@ -53,6 +53,7 @@ def main():
     if begin_time > end_time:
         print("Error: Begin time cannot be after end time.")
     else:
+        print('----------------------------------------------------------------')
         print(f"Selected time range: {begin_time} to {end_time}, Probe: {probe}")
 
 if __name__ == "__main__":
@@ -60,3 +61,6 @@ if __name__ == "__main__":
 
 # --------------------------------------------------------------------------------------------------------------------------------------
 
+plastic_vars = pyspedas.stereo.plastic(trange=[begin_time.strftime("%Y-%m-%d"), end_time.strftime("%Y-%m-%d")],probe=probe.lower())
+print('----------------------------------------------------------------')
+mag_vars = pyspedas.stereo.mag(trange=[begin_time.strftime("%Y-%m-%d"), end_time.strftime("%Y-%m-%d")],probe=probe.lower())
