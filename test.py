@@ -28,7 +28,6 @@ import smplotlib
 import warnings
 warnings.filterwarnings("ignore")
 
-from pytplot import get_data
 from datetime import datetime
 
 # --------------------------------------------------------------------------------------------------------------------------------------
@@ -95,3 +94,36 @@ values_proton_number_density = plastic_proton_number_density.y                ##
 values_proton_bulk_speed = plastic_proton_bulk_speed.y                        ## Bulk Speed
 values_proton_temperature = plastic_proton_temperature.y                      ## Temperature
 values_proton_thermal_speed = plastic_proton_thermal_speed.y                  ## Thermal Speed
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+dataset_plastic = pd.DataFrame(data=np.column_stack((t_proton_number_density,values_proton_number_density,values_proton_bulk_speed,values_proton_temperature,values_proton_thermal_speed)),columns=['Timestamps','Density','Bulk Speed','Temperature','Thermal Speed'])
+
+# unit='s' to convert it into epoch time
+dataset_plastic['Datetime'] = pd.to_datetime(dataset_plastic['Timestamps'],
+                                  unit='s').dt.strftime('%Y-%m-%d %H:%M')
+dataset_plastic["Datetime"] = dataset_plastic["Datetime"].astype("datetime64[ns]")
+dataset_plastic_new = dataset_plastic.set_index(pd.DatetimeIndex(dataset_plastic["Datetime"])).drop(["Datetime", "Timestamps"], axis=1)
+
+dataset_plastic_new[dataset_plastic_new < -999.9] = np.nan
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+dataset_mag_test = pd.DataFrame(data=np.column_stack((t_mag_data,values_mag_data_Br,values_mag_data_Bt,values_mag_data_Bn,values_mag_data_BTot)),columns=['Timestamps','Bx(R)','By(T)','Bz(N)','Total B'])
+
+# unit='s' to convert it into epoch time
+dataset_mag_test['Datetime'] = pd.to_datetime(dataset_mag_test['Timestamps'],
+                                  unit='s').dt.strftime('%Y-%m-%d %H:%M')
+dataset_mag_test["Datetime"] = dataset_mag_test["Datetime"].astype("datetime64[ns]")
+dataset_mag_test2 = dataset_mag_test.set_index(pd.DatetimeIndex(dataset_mag_test["Datetime"])).drop(["Datetime", "Timestamps"], axis=1)
+
+dataset_impact_new = dataset_mag_test2.resample('1min').mean()
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+if probe == "A":
+    sta_in_situ_data = pd.concat([dataset_plastic_new, dataset_impact_new], axis=1)
+    #display(sta_in_situ_data)
+elif probe == "B":
+    stb_in_situ_data = pd.concat([dataset_plastic_new, dataset_impact_new], axis=1)
+    #display(stb_in_situ_data)
