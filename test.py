@@ -24,7 +24,7 @@ import numpy as np
 import pandas as pd
 #import pyspedas
 
-from pytplot import get_data
+#from pytplot import get_data
 from datetime import datetime
 
 # --------------------------------------------------------------------------------------------------------------------------------------
@@ -37,19 +37,27 @@ def get_date_input(prompt):
         except ValueError:
             print("Invalid format. Please enter the date in YYYY-MM-DD format.")
 
+def get_probe_input():
+    while True:
+        probe = input("Select a probe (A or B): ").strip().upper()
+        if probe in ["A", "B"]:
+            return probe
+        print("Invalid input. Please enter A or B.")
+
 def main():
     print("Enter the time range:")
     begin_time = get_date_input("Begin time (YYYY-MM-DD): ")
     end_time = get_date_input("End time (YYYY-MM-DD): ")
+    probe = get_probe_input()
     
     if begin_time > end_time:
         print("Error: Begin time cannot be after end time.")
     else:
-        print(f"Selected time range: {begin_time} to {end_time}")
+        print(f"Selected time range: {begin_time} to {end_time}, Probe: {probe}")
 
 if __name__ == "__main__":
     main()
 
 # --------------------------------------------------------------------------------------------------------------------------------------
-#mag_vars = pyspedas.stereo.mag(trange=['2008-01-25', '2008-01-31'],probe='b')
-#plastic_vars = pyspedas.stereo.plastic(trange=['2008-01-25', '2008-01-31'],probe='b')
+#mag_vars = pyspedas.stereo.mag(trange=[begin_time, end_time],probe=probe)
+#plastic_vars = pyspedas.stereo.plastic(trange=[begin_time, end_time],probe=probe)
