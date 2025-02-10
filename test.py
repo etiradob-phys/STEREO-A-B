@@ -16,12 +16,14 @@ def install_package(package):
 install_package("numpy")
 install_package("pandas")
 install_package("pyspedas")
+install_package("smplotlib")
 
 # --------------------------------------------------------------------------------------------------------------------------------------
 
 import numpy as np
 import pandas as pd
 import pyspedas
+import smplotlib
 
 from pytplot import get_data
 from datetime import datetime
