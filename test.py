@@ -22,7 +22,7 @@ install_package("pandas")
 
 import numpy as np
 import pandas as pd
-import pyspedas
+#import pyspedas
 
 from pytplot import get_data
 from datetime import datetime
