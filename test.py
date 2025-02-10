@@ -11,7 +11,6 @@ def install_package(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 # --------------------------------------------------------------------------------------------------------------------------------------
-# Install numpy as an example
 # --------------------------------------------------------------------------------------------------------------------------------------
 
 install_package("numpy")
@@ -46,6 +45,7 @@ def get_probe_input():
 
 def main():
     print("Enter the time range:")
+    global begin_time, end_time, probe
     begin_time = get_date_input("Begin time (YYYY-MM-DD): ")
     end_time = get_date_input("End time (YYYY-MM-DD): ")
     probe = get_probe_input()
@@ -59,5 +59,4 @@ if __name__ == "__main__":
     main()
 
 # --------------------------------------------------------------------------------------------------------------------------------------
-#mag_vars = pyspedas.stereo.mag(trange=[begin_time, end_time],probe=probe)
-#plastic_vars = pyspedas.stereo.plastic(trange=[begin_time, end_time],probe=probe)
+
