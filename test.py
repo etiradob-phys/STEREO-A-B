@@ -30,6 +30,7 @@ import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings("ignore")
 
+from pytplot import get_data
 from datetime import datetime
 
 # --------------------------------------------------------------------------------------------------------------------------------------
