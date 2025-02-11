@@ -130,3 +130,33 @@ if probe == "A":
 elif probe == "B":
     stb_in_situ_data = pd.concat([dataset_plastic_new, dataset_impact_new], axis=1)
     #display(stb_in_situ_data)
+
+# --------------------------------------------------------------------------------------------------------------------------------------
+
+fig, (ax1, ax2, ax3, ax4, ax5) = plt.subplots(5, 1, figsize=(12, 7))
+
+ax1.plot(sta_in_situ_data['Total B'], color='black')
+ax2.plot(sta_in_situ_data['Bx(R)'], color='black', label='br')
+ax2.plot(sta_in_situ_data['By(T)'], color='blue', label='bt')
+ax2.plot(sta_in_situ_data['Bz(N)'], color='red', label = 'bn')
+ax3.plot(sta_in_situ_data['Density'], color='black')
+ax4.plot(sta_in_situ_data['Bulk Speed'], color='black')
+ax5.plot(sta_in_situ_data['Thermal Speed'], color='black')
+
+ax2.legend(loc='upper left', bbox_to_anchor=(1, 1))
+
+ax1.set_xticklabels([])  # Remove x-axis labels from ax1
+ax2.set_xticklabels([])  # Remove x-axis labels from ax2
+ax3.set_xticklabels([])  # Remove x-axis labels from ax3
+ax4.set_xticklabels([])  # Remove x-axis labels from ax4
+
+ax5.set_xlabel('Time, UT')
+
+ax1.set_ylabel('$|B|, \; [nT]$', color='black')
+ax2.set_ylabel('$B_{rtn}, \; [nT]$', color='black')
+ax3.set_ylabel('$N, \; [cm^{-3}]$', color='black')
+ax4.set_ylabel('$|V|, \; [km/s]$', color='black')
+ax5.set_ylabel('$V_{thermal}, \; [km/s]$', color='black')
+
+plt.tight_layout()
+plt.show()
