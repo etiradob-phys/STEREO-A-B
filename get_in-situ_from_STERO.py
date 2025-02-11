@@ -16,7 +16,7 @@ def install_package(package):
 install_package("numpy")
 install_package("pandas")
 install_package("pyspedas")
-install_package("matplotlib)
+install_package("matplotlib")
 #install_package("smplotlib")
 
 # --------------------------------------------------------------------------------------------------------------------------------------
@@ -30,6 +30,7 @@ import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings("ignore")
 
+from pytplot import get_data
 from datetime import datetime
 
 # --------------------------------------------------------------------------------------------------------------------------------------
