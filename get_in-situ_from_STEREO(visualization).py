@@ -13,11 +13,11 @@ def install_package(package):
 # --------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------
 
-install_package("numpy")
-install_package("pandas")
+#install_package("numpy")
+#install_package("pandas")
 install_package("pyspedas")
-install_package("matplotlib")
-#install_package("smplotlib")
+#install_package("matplotlib")
+install_package("smplotlib")
 
 # --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ import numpy as np
 import pandas as pd
 import pyspedas
 import matplotlib.pyplot as plt
-#import smplotlib
+import smplotlib
 
 import warnings
 warnings.filterwarnings("ignore")
