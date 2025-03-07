@@ -34,15 +34,6 @@ from pytplot import get_data
 from datetime import datetime
 
 # --------------------------------------------------------------------------------------------------------------------------------------
-
-def get_date_input(prompt):
-    while True:
-        date_str = input(prompt)
-        try:
-            return datetime.strptime(date_str, "%Y-%m-%d").date()
-        except ValueError:
-            print("Invalid format. Please enter the date in YYYY-MM-DD format.")
-
 def get_probe_input():
     while True:
         probe = input("Select a probe (A or B): ").strip().upper()
@@ -53,8 +44,16 @@ def get_probe_input():
 def main():
     print("Enter the time range:")
     global begin_time, end_time, probe
-    begin_time = get_date_input("Begin time (YYYY-MM-DD): ")
-    end_time = get_date_input("End time (YYYY-MM-DD): ")
+    year_ti = input("Enter the initial year: ")
+    month_ti = input("Enter the initial month (e.g., JAN -> 01): ")
+    day_ti = input("Enter the initial day: ")
+    print('---------------------------------------------------------------')
+    year_tf = input("Enter the final year: ")
+    month_tf = input("Enter the final month (e.g., JAN -> 01): ")
+    day_tf = input("Enter the final day: ")
+    print('---------------------------------------------------------------')
+    begin_time = f"{year_ti}-{month_ti}-{day_ti}"
+    end_time = f"{year_tf}-{month_tf}-{day_tf}"
     probe = get_probe_input()
     
     if begin_time > end_time:
