@@ -55,6 +55,8 @@ def main():
     begin_time = f"{year_ti}-{month_ti}-{day_ti}"
     end_time = f"{year_tf}-{month_tf}-{day_tf}"
     probe = get_probe_input()
+    ti = f"{year_ti}{month_ti}{day_ti}"
+    tf = f"{year_tf}{month_tf}{day_tf}"
     
     if begin_time > end_time:
         print("Error: Begin time cannot be after end time.")
