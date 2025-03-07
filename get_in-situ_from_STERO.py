@@ -13,11 +13,11 @@ def install_package(package):
 # --------------------------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------------------------------------------------
 
-install_package("numpy")
-install_package("pandas")
+#install_package("numpy")
+#install_package("pandas")
 install_package("pyspedas")
-install_package("matplotlib")
-#install_package("smplotlib")
+#install_package("matplotlib")
+install_package("smplotlib")
 
 # --------------------------------------------------------------------------------------------------------------------------------------
 
