@@ -67,9 +67,9 @@ if __name__ == "__main__":
 
 # --------------------------------------------------------------------------------------------------------------------------------------
 
-plastic_vars = pyspedas.stereo.plastic(trange=[begin_time.strftime("%Y-%m-%d"), end_time.strftime("%Y-%m-%d")],probe=probe.lower())
+plastic_vars = pyspedas.stereo.plastic(trange=[begin_time, end_time],probe=probe.lower())
 print('----------------------------------------------------------------')
-mag_vars = pyspedas.stereo.mag(trange=[begin_time.strftime("%Y-%m-%d"), end_time.strftime("%Y-%m-%d")],probe=probe.lower())
+mag_vars = pyspedas.stereo.mag(trange=[begin_time, end_time],probe=probe.lower())
 
 # --------------------------------------------------------------------------------------------------------------------------------------
 
