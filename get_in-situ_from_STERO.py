@@ -126,7 +126,7 @@ dataset_impact_new = dataset_mag_test2.resample('1min').mean()
 
 if probe == "A":
     sta_in_situ_data = pd.concat([dataset_plastic_new, dataset_impact_new], axis=1)
-    #display(sta_in_situ_data)
+    
 elif probe == "B":
     stb_in_situ_data = pd.concat([dataset_plastic_new, dataset_impact_new], axis=1)
-    #display(stb_in_situ_data)
+    
